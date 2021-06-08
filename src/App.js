@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import AddTask from "./components/AddTask";
+import EachTask from "./components/EachTask";
+import "./App.css";
+const DUMMY_TASKS = [
+  { id: 1, title: "Walking My Dog" },
+  { id: 2, title: "Learning ReactJs" },
+];
 function App() {
+  const [Task, updateTask] = useState(DUMMY_TASKS);
+  const TaskHandler = (task) => {
+    updateTask((prevArray) => {
+      return [task, ...prevArray];
+    });
+    console.log(Task);
+  };
+  const DeleteHandler = (id) => {
+    console.log("Deleted ID "+id);
+    updateTask((prevArray) => {
+      return prevArray.filter((task) => task.id !== id);
+    });
+  };
+  const eachTask = Task.map((each) => (
+    <EachTask
+      key={each.id}
+      id={each.id}
+      task={each.title}
+      onDelete={DeleteHandler}
+    ></EachTask>
+  ));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-div">
+      <h1>My To-Do List</h1>
+      <AddTask task={TaskHandler}></AddTask>
+      {Task.length > 0 ? eachTask : <h1>Empty List!</h1>}
     </div>
   );
 }

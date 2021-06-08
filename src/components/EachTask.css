@@ -1,0 +1,10 @@
+.task {
+    background: currentColor;
+    border: 9px solid aliceblue;
+    color: bisque;
+    border-radius: 13px;
+}
+
+.task h1{
+    color: white;
+}
