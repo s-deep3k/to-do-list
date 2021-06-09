@@ -1,8 +1,13 @@
 .add-task-input{
+    background-color: transparent;
     margin: 5px;
     border: 2px solid teal;
     border-radius: 20px;
     padding: 11px;
+}
+.invalid{
+    border: 2px solid red;
+    background-color: rgb(250, 175, 175);
 }
 .add-task-input:focus{
     outline: none;

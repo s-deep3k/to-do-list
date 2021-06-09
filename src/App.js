@@ -29,6 +29,9 @@ function App() {
     ></EachTask>
   ));
   return (
+    <div>
+      
+    </div>
     <div className="main-div">
       <h1>My To-Do List</h1>
       <AddTask task={TaskHandler}></AddTask>
